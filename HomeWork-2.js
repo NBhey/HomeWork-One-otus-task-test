@@ -43,3 +43,5 @@ function check(circle, square){
     let a = Math.sqrt(square);
     return  (d > a) ? false : true
 }
+
+module.exports = {moreLess, monthSearch, check}; 
