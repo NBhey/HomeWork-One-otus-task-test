@@ -30,3 +30,5 @@ function averageOf(num){
     }
     return res / count;
 }
+
+module.exports = {sumInteger, multiSeven, averageOf}; 
