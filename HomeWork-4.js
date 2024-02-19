@@ -24,7 +24,7 @@ function copyUser(role) {
 
 function variables(user){
     let {name,age,role} = admin;
-    (name === 'John' && age === 22 && role === 'admin') ? console.log(true) : console.log(false);
+    return (name === 'John' && age === 22 && role === 'admin') ? console.log(true) : console.log(false);
 }
 
 
