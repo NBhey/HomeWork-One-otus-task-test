@@ -9,7 +9,7 @@ function diff(a, b){
 // Task 2: Напишите функцию isWord, которая принимает на вход текстовую строку. Функция возвращает true, если строка состоит из одного слова и false, усли из нескольких
 
 function isWord(str){
-    return (str.split('').length = 1) ? true : false;
+    return (str.split(',').length > 1) ? true : false;
 }
 
 // Task 3: Напишите функцию pow(a,x), которя вернёт значение числа а, возвдененого в степент х  
@@ -17,3 +17,4 @@ function isWord(str){
 function pow(a,x){
     return a ** x;
 }
+module.exports = {diff, isWord, pow}
