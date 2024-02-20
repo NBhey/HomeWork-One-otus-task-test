@@ -26,9 +26,17 @@ function addItem(){
     const el = document.createElement('p');
     el.innerText = text;
     main.append(el);
+    count++
+    if (count == 6){
+        document.querySelector('p').remove();
+        count--
+    }
 }
 
 // Task 3: Если параграфов становится больше 5, первый из них удаляется 
+
+let count = 3; 
+
 
 
 
