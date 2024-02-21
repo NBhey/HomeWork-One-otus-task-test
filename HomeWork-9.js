@@ -18,3 +18,5 @@ let input = +prompt('Введите R');
 let circleSquare = Math.PI * Math.pow(input, 2);
 let circleLength = 2 * Math.PI * input;
 console.log(`Площадь круга с радиусом ${input} равна: ${Math.round(circleSquare)}. Длина окружности равна: ${Math.round(circleLength)}`);
+
+// Task 3: Пользователь вводит числа a, b и c. Написать программу, выводящую корни квадратного  уравнения с коэффициентами a, b и c.
