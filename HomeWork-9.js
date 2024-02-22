@@ -20,3 +20,19 @@ let circleLength = 2 * Math.PI * input;
 console.log(`Площадь круга с радиусом ${input} равна: ${Math.round(circleSquare)}. Длина окружности равна: ${Math.round(circleLength)}`);
 
 // Task 3: Пользователь вводит числа a, b и c. Написать программу, выводящую корни квадратного  уравнения с коэффициентами a, b и c.
+
+let inputNum = +prompt("Введите три числа через запятую");
+let [d,f,g] = inputNum; 
+let discr = Math.pow(b,2)-4*a*c;
+if (discr>0){
+    let x1 = (-b + Math.sqrt(discr)) / (2 * a);
+    let x2 = (-b - Math.sqrt(discr)) / (2 * a);
+    console.log(`корень x1:${x1}, корень х2:${x2}`);
+} else if (discr===0){
+    const x = -b / (2 * a);
+    console.log(`x= ${x}`);
+} else {
+    console.log("Нет корней");
+}
+
+
