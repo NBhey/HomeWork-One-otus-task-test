@@ -10,15 +10,15 @@ function sumInteger(a, b) {
     return sum;
 }
 
-// Task 2: Вывести в консоль таблицу умнодения на 7. 
+// Task 2: Вывести в консоль таблицу умножения на 7. 
 
-function multiSeven(a) {
-    let multi = 7 * a; 
-    return `7 * ${a} = ${multi}`
-}
+function multiSeven() {
+    for (let i = 1; i < 10; i++) {
+        console.log(`7 x ${i} = ${7 * i}`);
+      }
+    }
 
 // Task 3: Запросить у пользователя ввод числа N. Вывести в  консоль среднее арифметическое всех нечетных чисел от 1 до N. 
-
 function averageOf(num){
     let count = 0; 
     let res = 0; 
@@ -30,5 +30,6 @@ function averageOf(num){
     }
     return res / count;
 }
+
 
 module.exports = {sumInteger, multiSeven, averageOf}; 
