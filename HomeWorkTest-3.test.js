@@ -22,9 +22,9 @@ test('multiSeven', () => {
     '7 x 9 = 63'
   ];
   homework3.multiSeven();
-  expect(console.log).toHaveBeenCalledTimes(9);
+  expect(logSpy).toHaveBeenCalledTimes(9);
   for (let i = 1; i < 10; i++){
-    expect(console.log).toHaveBeenNthCalledWith(i,testArr[i - 1]);
+    expect(logSpy).toHaveBeenNthCalledWith(i,testArr[i - 1]);
   }
   });
 

@@ -1,14 +1,10 @@
 const homework4 = require('./HomeWork-4');
+const logSpy = jest.spyOn(global.console, 'log');
 
-// Test task 1 
+it('new object', () => {
+homework4.newObject('John', 22, 'admin')
+expect(logSpy).toHaveBeenCalledTimes(1);
+expect(logSpy).toHaveBeenCalledWith('John', 22, 'admin');
+});
 
-test('ageUser', () => {
-    expect(homework4.ageUser(22)).toStrictEqual({name: 'John', age: 22});
-  });
-
-// Test task 2 
-
-test('copyUser', () => {
-    expect(homework4.copyUser('admin')).toStrictEqual({name: 'John', age: 22, role: 'admin'});
-  });
 
