@@ -8,7 +8,11 @@ test('diff', () => {
 
 // Test task 2 
 test('isWord', () => {
-    expect(homework6.isWord('hello JavaScript')).toBe(false);
+    expect(homework6.isWord(" Hello ")).toBe(true);
+    expect(homework6.isWord(" Hello")).toBe(true);
+    expect(homework6.isWord("Hello, ")).toBe(true);
+    expect(homework6.isWord("Hello world")).toBe(false);
+    expect(homework6.isWord(" Hello, world ")).toBe(false);
   });
 
   // Test task 3
