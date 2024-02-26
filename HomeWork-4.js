@@ -3,7 +3,7 @@
 
 
 function newObject(userName, years, profession){
-    user = {}
+   let user = {}
     user.name = userName;
     user.age = years;
 

@@ -10,22 +10,25 @@ function sumArr(a){
     for (let i = 0; i <= a.length; i++){
         sum = sum + i;
     }
-    return sum;
+    console.log(sum);
+    return sum
 }
 
 // Task 2: Создайте новый массив на основе исходного в котором каждый элемент будет вдвое больше элемента исходного массива 
 
 function newArr(el){
-    let newArr = []
-    for (let i = 0; i < el.length; i++){
-        newArr.push(el[i]*2)
-    }
+    let newArr = el.map(function(item){
+       return item = item * 2
+    });
     return newArr;
 }
 
 // Task 3: Найдите и выведите в консоль наибольший и наименьший элемент исходного массива. 
-console.log(Math.max(...arr))
-console.log(Math.min(...arr))
+function minMax(arr){
+    console.log(`Наибольшее значение массива ${Math.max(...arr)}`)
+    console.log(`Наименьшее значение массива ${Math.min(...arr)}`)
+}
 
 
-module.exports = {sumArr, newArr}
+
+module.exports = {sumArr, newArr, minMax}
