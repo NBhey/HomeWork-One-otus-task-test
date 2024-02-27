@@ -22,7 +22,6 @@ function lengthAndSquare(input){
 // Task 3: Пользователь вводит числа a, b и c. Написать программу, выводящую корни квадратного  уравнения с коэффициентами a, b и c.
 
 function quadraticEquation(a,b,c){
- 
     let discr = Math.pow(b,2)-4*a*c;
         if (discr>0){
     let x1 = (-b + Math.sqrt(discr)) / (2 * a);
