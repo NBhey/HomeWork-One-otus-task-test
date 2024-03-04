@@ -4,53 +4,62 @@ const homework7 = require('./HomeWork-7');
 describe('create list', () => {
   let element;
   let input;
-  let button;
+  let btn;
+
+ function getPeragraphs() {
+    return [...element.querySelectorAll('p')].map((el) => el.innerHTML);
+  }
+
+
 
   beforeEach(() => {
     element = document.createElement('div');
     homework7.userList(element);
     input = element.querySelector('input');
-    button = element.querySelector('button');
+    btn = element.querySelector('button');
   });
 
-  function getPeragraphs() {
-    let checkArr = []
-    for (let i = 1;  i < 4; i++) {
-      const el = document.createElement('p')
-      el.innerText = `Параграф ${i}`;
-      checkArr.push(el);
-      element.append(el);
-     
-  }
-  }
-
-  test('should create initial markup', () => {
+  test('верстаем макет', () => {
     const list = element.querySelectorAll('p');
 
     expect(input).toBeTruthy();
     expect(input.value).toEqual('');
 
-    expect(button).toBeTruthy();
-    expect(button.innerHTML).toBe("Добавить параграф");
-    expect(button.hidden).toBe(true);
+    expect(btn).toBeTruthy();
+    expect(btn.innerHTML).toBe("Добавить параграф");
+    expect(btn.hidden).toBe(true);
 
     expect(list).toBeTruthy();
     expect(list.length).toBe(3);
   });
   
-  test('should hide button on input empty', () => {
+  test('скрываем кнопку', () => {
     expect(input).toBeTruthy();
-    expect(button).toBeTruthy();
+    expect(btn).toBeTruthy();
+
     expect(input.value).toEqual('');
-    expect(button.hidden).toBe(true);
+    expect(btn.hidden).toBe(true);
+
+    input.value = 'test';
+    expect(input.value).toEqual('test');
+    input.dispatchEvent(new Event('input'));
+    expect(btn.hidden).toBe(false);
 });
 
-  test('should append list on button click', () => {  
-  input.value = 'test';
-  input.dispatchEvent(new Event('input'));
-  expect(input.value).toEqual('test');
-  expect(button.hidden).toBe(false);
+  test('добавляем список', () => {  
+    input.value = 'test';
+    input.dispatchEvent(new Event('input'));
+    expect(input.value).toEqual('test');
+
+    
+    expect(btn.hidden).toBe(false);
+    expect(getPeragraphs()).toEqual(['Параграф 1', 'Параграф 2', 'Параграф 3', 'test']);
+    btn.click();
+    
+    expect(input.value).toEqual('');
+    
 });
-  
+
+
 
 });

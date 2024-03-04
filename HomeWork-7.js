@@ -18,13 +18,15 @@ function userList(element){
     btn.innerHTML = 'Добавить параграф';
     element.append(btn);
     btn.hidden = true;
-    
+
+    const paragraphsArr = []
     for (let i = 1;  i < 4; i++) {
         const el = document.createElement('p')
-        el.innerText = `Параграф ${i}`;
+        el.innerHTML = `Параграф ${i}`;
         element.append(el);
+        paragraphsArr.push(el.innerText = `Параграф ${i}`)
     }
-
+    // console.log(paragraphsArr);
 // Task 1: Кнопка скрыта,если в поле ввода нет значения 
 
     input.addEventListener('input',() => {
@@ -39,15 +41,19 @@ function userList(element){
     btn.addEventListener('click', () => {
         let new_paragraph = document.createElement('p');
         new_paragraph.innerText = input.value;
+        paragraphsArr.push(input.value)
+        if (paragraphsArr.length == 6){
+            paragraphsArr.shift()
+        }
+        console.log(paragraphsArr)
         element.append(new_paragraph)
         count ++; 
         if (count == 6 ){
             document.querySelector('p').remove();
             count--
         }
-        
+        input.value = '';
     })
-
 }
 let rock = document.createElement('section')
 userList(rock)
