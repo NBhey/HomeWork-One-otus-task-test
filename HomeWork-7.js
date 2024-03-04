@@ -31,16 +31,15 @@ function userList(element){
 // Task 1: Кнопка скрыта,если в поле ввода нет значения 
 
     input.addEventListener('input',() => {
-        if (input.value != '') {
-            btn.hidden = false;
-        } else { btn.hidden = true }
+        if (input.value == '') {
+            btn.hidden = true;
+        } else { btn.hidden = false; }
     });
 
 // Task 2: При клике на кнопку добавляется параграф содержащий текст из поля ввода
 // Task 3: Если параграфов становится больше 5, первый из них удаляется 
     let count = 3;
-    btn.addEventListener('click', (ev) => {
-        ev.preventDefault();
+    btn.addEventListener('click', () => {
         let new_paragraph = document.createElement('p');
         new_paragraph.innerHTML = input.value;
         paragraphsArr.push(input.value)
@@ -49,6 +48,7 @@ function userList(element){
         }
         console.log(paragraphsArr)
         input.value = '';
+        btn.hidden = true;
         element.append(new_paragraph)
         count ++; 
         if (count == 6 ){
