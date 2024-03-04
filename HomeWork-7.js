@@ -1,42 +1,58 @@
 // HOMEWORK 7
-//  Сверстать страницу и подключить к ней файл со скриптом. Настранице должны быть три текстовых параграфа, поле ввода и кнопка. Написать скрипт,который будет выполнять следующие условия:
+function userList(element){
+
+ //  Сверстать страницу и подключить к ней файл со скриптом. Настранице должны быть три текстовых параграфа, поле ввода и кнопка. Написать скрипт,который будет выполнять следующие условия:
+
+    let body = document.querySelector('body');
+    body.append(element)
+
+    const title = document.createElement('h2');
+    title.innerText = 'Список с параграфами';
+    element.append(title);
+    
+    const input = document.createElement('input');
+    input.value = '';
+    element.append(input);
+    
+    const btn = document.createElement('button');
+    btn.innerHTML = 'Добавить параграф';
+    element.append(btn);
+    btn.hidden = true;
+    
+    for (let i = 1;  i < 4; i++) {
+        const el = document.createElement('p')
+        el.innerText = `Параграф ${i}`;
+        element.append(el);
+    }
 
 // Task 1: Кнопка скрыта,если в поле ввода нет значения 
 
-let btn = document.querySelector('.btn');
-let textInput = document.querySelector('.input-text');
-let main = document.querySelector('.main')
-
-textInput.addEventListener('input', input)
-btn.addEventListener('click',addItem)
-
-function input(){
-    if (textInput.value === '' ){
-        btn.hidden = true;
-    } else {
-        btn.hidden = false;
-    }
-}
-input();
+    input.addEventListener('input',() => {
+        if (input.value != '') {
+            btn.hidden = false;
+        } else { btn.hidden = true }
+    });
 
 // Task 2: При клике на кнопку добавляется параграф содержащий текст из поля ввода
-
-function addItem(){
-    const text = textInput.value;
-    const el = document.createElement('p');
-    el.innerText = text;
-    main.append(el);
-    count++
-    if (count == 6){
-        document.querySelector('p').remove();
-        count--
-    }
-}
-
 // Task 3: Если параграфов становится больше 5, первый из них удаляется 
+    let count = 3;
+    btn.addEventListener('click', () => {
+        let new_paragraph = document.createElement('p');
+        new_paragraph.innerText = input.value;
+        element.append(new_paragraph)
+        count ++; 
+        if (count == 6 ){
+            document.querySelector('p').remove();
+            count--
+        }
+        
+    })
 
-let count = 3; 
+}
+let rock = document.createElement('section')
+userList(rock)
 
 
 
 
+module.exports = {userList}
