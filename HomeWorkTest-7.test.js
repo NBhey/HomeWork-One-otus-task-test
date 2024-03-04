@@ -6,7 +6,7 @@ describe('create list', () => {
   let input;
   let btn;
 
-  let arr = function getPeragraphs() {
+ function getPeragraphs() {
     return [...element.querySelectorAll('p')].map((el) => el.innerHTML);
   }
 
@@ -49,14 +49,15 @@ describe('create list', () => {
   test('добавляем список', () => {  
     input.value = 'test';
     input.dispatchEvent(new Event('input'));
-    expect(input.value).toEqual('test');
 
+    expect(input.value).toEqual('test');
     expect(btn.hidden).toBe(false);
-    expect(arr()).toEqual(['Параграф 1', 'Параграф 2', 'Параграф 3']);
+    
     btn.click();
-    
     expect(input.value).toEqual('');
-    
+
+    expect(getPeragraphs()).toEqual(expect.arrayContaining(['Параграф 1', 'Параграф 2', 'Параграф 3','test']));
+    expect(getPeragraphs()).toEqual(['Параграф 1', 'Параграф 2', 'Параграф 3','test']);
 });
 
 

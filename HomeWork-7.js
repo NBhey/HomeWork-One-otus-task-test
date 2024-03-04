@@ -1,4 +1,5 @@
 // HOMEWORK 7
+
 function userList(element){
 
  //  Сверстать страницу и подключить к ней файл со скриптом. Настранице должны быть три текстовых параграфа, поле ввода и кнопка. Написать скрипт,который будет выполнять следующие условия:
@@ -38,21 +39,23 @@ function userList(element){
 // Task 2: При клике на кнопку добавляется параграф содержащий текст из поля ввода
 // Task 3: Если параграфов становится больше 5, первый из них удаляется 
     let count = 3;
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (ev) => {
+        ev.preventDefault();
         let new_paragraph = document.createElement('p');
-        new_paragraph.innerText = input.value;
+        new_paragraph.innerHTML = input.value;
         paragraphsArr.push(input.value)
         if (paragraphsArr.length == 6){
             paragraphsArr.shift()
         }
         console.log(paragraphsArr)
+        input.value = '';
         element.append(new_paragraph)
         count ++; 
         if (count == 6 ){
             document.querySelector('p').remove();
             count--
         }
-        input.value = '';
+        
     })
 }
 let rock = document.createElement('section')
