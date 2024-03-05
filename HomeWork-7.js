@@ -16,7 +16,7 @@ function userList(element){
     element.append(input);
     
     const btn = document.createElement('button');
-    btn.innerHTML = 'Добавить параграф';
+    btn.innerText = 'Добавить параграф';
     element.append(btn);
     btn.hidden = true;
 
@@ -39,24 +39,29 @@ function userList(element){
 // Task 2: При клике на кнопку добавляется параграф содержащий текст из поля ввода
 // Task 3: Если параграфов становится больше 5, первый из них удаляется 
     let count = 3;
-    btn.addEventListener('click', () => {
+    btn.addEventListener('click', (ev) => {
+        ev.preventDefault();
         let new_paragraph = document.createElement('p');
-        new_paragraph.innerHTML = input.value;
-        paragraphsArr.push(input.value)
-        if (paragraphsArr.length == 6){
-            paragraphsArr.shift()
-        }
-        console.log(paragraphsArr)
+        new_paragraph.innerText = input.value;
+        // paragraphsArr.push(input.value)
+        // if (paragraphsArr.length == 6){
+        //     paragraphsArr.shift()
+        // }
+        // console.log(paragraphsArr)
         input.value = '';
         btn.hidden = true;
         element.append(new_paragraph)
-        count ++; 
-        if (count == 6 ){
-            document.querySelector('p').remove();
-            count--
-        }
-        
+        // count ++; 
+        // if (count == 6 ){
+        //     document.querySelector('p').remove();
+        //     count--
+        // }
+
+        const paragraphs = element.querySelectorAll('p');
+        if (paragraphs.length > 5) paragraphs[0].remove();
+        // console.log(paragraphs);
     })
+    
 }
 let rock = document.createElement('section')
 userList(rock)

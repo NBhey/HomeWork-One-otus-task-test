@@ -7,7 +7,7 @@ describe('create list', () => {
   let btn;
 
  function getPeragraphs() {
-    return [...element.querySelectorAll('p')].map((el) => el.innerHTML);
+    return [...element.querySelectorAll('p')].map((el) => el.innerText);
   }
 
 
@@ -26,7 +26,7 @@ describe('create list', () => {
     expect(input.value).toEqual('');
 
     expect(btn).toBeTruthy();
-    expect(btn.innerHTML).toBe("Добавить параграф");
+    expect(btn.innerText).toBe("Добавить параграф");
     expect(btn.hidden).toBe(true);
 
     expect(list).toBeTruthy();
@@ -60,6 +60,18 @@ describe('create list', () => {
     expect(getPeragraphs()).toEqual(['Параграф 1', 'Параграф 2', 'Параграф 3','test']);
 });
 
-
+  test ('проверяем, что в списке не больше пяти пунктов', () => {
+    input.value = 'test';
+    input.dispatchEvent(new Event('input'));
+    btn.click();
+    input.value = 'test2';
+    input.dispatchEvent(new Event('input'));
+    btn.click();
+    input.value = 'test3';
+    input.dispatchEvent(new Event('input'));
+    btn.click();
+    expect(getPeragraphs()).toEqual(expect.arrayContaining(['Параграф 2', 'Параграф 3', 'test', 'test2', 'test3']));
+    expect(getPeragraphs()).toEqual(['Параграф 2', 'Параграф 3','test','test2','test3']);
+  });
 
 });
